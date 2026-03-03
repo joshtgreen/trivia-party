@@ -58,7 +58,12 @@ export default function HostPage() {
       }
 
       const data = await res.json();
-      router.push(`/room/${data.roomCode}`);
+      const params = new URLSearchParams({
+        name: hostName.trim(),
+        avatar: avatarId,
+        host: "1",
+      });
+      router.push(`/room/${data.roomCode}?${params.toString()}`);
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong.");
       setPageState("error");

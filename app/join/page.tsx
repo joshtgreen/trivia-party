@@ -46,9 +46,11 @@ function JoinForm() {
         const data = await res.json();
         throw new Error(data.error || "Room not found.");
       }
-      // Room exists — realtime join will be wired up in Milestone 3.
-      // For now, redirect to the room page to preview it.
-      window.location.href = `/room/${roomCode}`;
+      const params = new URLSearchParams({
+        name: playerName.trim(),
+        avatar: avatarId,
+      });
+      window.location.href = `/room/${roomCode}?${params.toString()}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
       setChecking(false);
