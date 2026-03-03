@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { validateName, validateThemeInput } from "@/lib/validation";
+import { AvatarPicker } from "@/components/game/AvatarPicker";
+import { getRandomAvatar } from "@/lib/avatars";
 import type { Difficulty } from "@/lib/types";
 
 type PageState = "form" | "generating" | "error";
@@ -25,6 +27,7 @@ export default function HostPage() {
   const [hostName, setHostName] = useState("");
   const [themeInput, setThemeInput] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
+  const [avatarId, setAvatarId] = useState(() => getRandomAvatar().id);
   const [touched, setTouched] = useState({ name: false, theme: false });
 
   const nameCheck = validateName(hostName);
@@ -45,6 +48,7 @@ export default function HostPage() {
           hostName: hostName.trim(),
           themeInput: themeInput.trim(),
           difficulty,
+          avatarId,
         }),
       });
 
@@ -163,6 +167,8 @@ export default function HostPage() {
             {DIFFICULTIES.find((d) => d.value === difficulty)?.desc}
           </p>
         </div>
+
+        <AvatarPicker selected={avatarId} onSelect={setAvatarId} />
 
         <Button
           onClick={handleSubmit}
