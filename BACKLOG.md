@@ -8,16 +8,17 @@ Stuff to do, fix, or think about. Checked items are done.
 
 ## Up Next
 
-- [ ] Realtime architecture decision: pick WebSocket provider (PartyKit vs Ably vs Pusher vs custom) for Milestone 3
-- [ ] Wire up actual multiplayer join flow (player joins room via WebSocket, sees lobby)
-- [ ] Game loop: timer, answer submission, reveal, host-driven pacing (Milestone 4)
+- [x] Realtime architecture decision: pick WebSocket provider (PartyKit vs Ably vs Pusher vs custom) for Milestone 3
+- [x] Wire up actual multiplayer join flow (player joins room via WebSocket, sees lobby)
+- [x] Game loop: timer, answer submission, reveal, host-driven pacing (Milestone 4)
+- [ ] Deploy PartyKit to production (`npx partykit deploy`) and set `NEXT_PUBLIC_PARTYKIT_HOST` on Vercel
 - [ ] Results persistence: save final leaderboard to `game_results` table, shareable link with 7-day TTL (Milestone 5)
 
 ## UI / Polish
 
 - [ ] Motif background layer: render Claude-selected motif SVGs as subtle background patterns on room pages
 - [ ] Audio system: lofi background track, SFX (join pop, countdown tick, correct/incorrect, winner fanfare), mute toggle
-- [ ] Winner celebration screen with confetti animation
+- [x] Winner celebration screen with confetti animation
 - [ ] Custom 404 page matching the dark theme
 - [ ] "What is this?" modal on landing page (3-step explainer)
 - [ ] Loading skeleton for room page (while DB query resolves)
